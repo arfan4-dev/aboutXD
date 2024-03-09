@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { primaryFont } from "../lib/fonts";
 import { SITE_TITLE } from "@/lib/constants";
-import Link from 'next/link '
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
       </Head>
       <main className={`${primaryFont.className}`}>
         <h2>Page not found</h2>
-        <Link href="/">Home</Link>
       </main>
     </>
   );
