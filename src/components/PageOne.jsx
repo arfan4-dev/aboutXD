@@ -42,7 +42,7 @@ const PageOne = () => {
           />
           <img
             className=" sm:w-[60px] lg:w-[80px]  xl:w-[140px] xl:h-[40px] 2xl:w-[185px] 2xl:h-[50px]"
-            src="/assets/Zima.svg"
+            src="/assets/zima.png"
             alt="Zima"
           />
           <p className=" uppercase text-white tracking-[2px] sm:text-[8px] lg:text-[12px] xl:text-[14px]">about</p>
