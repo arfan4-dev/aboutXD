@@ -6,9 +6,9 @@ const PageFive = () => {
   return (
     <div className="bg-cover bg-center w-[full] h-[100vh] overflow-hidden  relative" style={{ backgroundImage: 'url(/assets/page5.png)' }}>
 
-      <div className='w-[450px] h-[200px]  sm:absolute p-10 sm:py-20 2xl:p-0 sm:-right-28 lg:top-0 lg:right-16 2xl:top-28 xl:right-32 '>
-        <p className='  text-left text-[10px] sm:text-[14px] lg:text-[20px] 2xl:text-[40px] tracking-[2px] sm:tracking-[4px] text-[#FFFFFF]'>Personalised for You</p>
-        <p className='w-[70%] sm:w-[70%] 2xl:w-[100%] lg:w-[350px]  text-justify text-[10px] sm:text-[10px] lg:text-[12px] 2xl:text-[20px] text-[#999797] leading-[15px] sm:leading-[20px] 2xl:leading-[40px]'>Delivering thousands of personalised alerts everyday, our USERS can be first in line when that opportunity of a lifetime is here.</p>
+      <div className='w-[450px] h-[200px] absolute left-40 py-8 px-6  sm:py-20 2xl:p-0 sm:top-5 lg:top-0 lg:-right-14  2xl:top-28 xl:-right-10 '>
+        <p className='   text-[10px] sm:text-[14px] lg:text-[20px] 2xl:text-[40px] tracking-[2px] sm:tracking-[4px] text-[#FFFFFF]'>Personalised for You</p>
+        <p className='w-[40%] sm:w-[70%] lg:w-[280px] 2xl:w-[100%]   text-justify text-[8px] sm:text-[10px] lg:text-[12px] 2xl:text-[20px] text-[#999797] leading-[12px] sm:leading-[20px] 2xl:leading-[40px]'>Delivering thousands of personalised alerts everyday, our USERS can be first in line when that opportunity of a lifetime is here.</p>
       </div>
 
       <div>

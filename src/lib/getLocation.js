@@ -11,7 +11,7 @@ function getUserLocation() {
           },
           (error) => {
             reject(error.message);
-          }
+          } 
         );
       } else {
         reject("Geolocation is not supported by this browser.");

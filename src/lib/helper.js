@@ -1,10 +1,13 @@
 import axios from "axios";
 import { API_URL, DEFAULT_HEADER } from "../lib/constants";
+import { getLocation } from "./getLocation";
 
-export const getVisitor = async (lat = null, long = null) => {
+export const getVisitor = async () => {
+  let location = getLocation();
+
   try {
     const { data } = await axios.get(
-      `${API_URL}/api/zimomeet_app/news-visitors?lat=${lat}&lng=${long}`,
+      `${API_URL}/api/zimomeet_app/news-visitors?lat=${location.latitude}&lng=${location.longitude}`,
       {
         headers: DEFAULT_HEADER,
       }

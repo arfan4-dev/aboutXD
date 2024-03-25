@@ -4,9 +4,9 @@ import PageSeven from "@/components/PageSeven";
 import PageSix from "@/components/PageSix";
 import PageFive from "@/components/PageFive";
 import PageFour from "@/components/PageFour";
-import PageTwo from "@/components/PageTwo";
 import PageOne from "@/components/PageOne";
 import PageNine from "@/components/PageNine";
+import PageTwo from "./PageTwo";
 
 export default function Home() {
 
@@ -16,12 +16,14 @@ export default function Home() {
         <title>About xd</title>
       </Head>
       <main>
+
         <PageOne />
         <PageTwo />
         <PageThree />
         <PageFour />
         <PageFive />
         <PageSix />
+
         <PageSeven />
         <PageNine />
       </main>

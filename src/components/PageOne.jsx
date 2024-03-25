@@ -4,8 +4,8 @@ import { CiUser } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
 import React, { useEffect, useState } from 'react'
 import { getDate, getDay, getMonth, getYear, getTime } from "../lib/getDate";
-import { getLocation } from "../lib/getLocation";
 import { getVisitor } from "../lib/helper";
+import Link from "next/link";
 const PageOne = () => {
   const [visitor, setVisitor] = useState();
   const [date, setDate] = useState([{
@@ -16,10 +16,15 @@ const PageOne = () => {
     currentTime: getTime(),
   }])
   useEffect(() => {
-    let location = getLocation();
-    setVisitor(getVisitor(location.latitude, location.longitude));
     const visitorData = JSON.parse(localStorage.getItem("visitor"));
-    setVisitor(visitorData);
+    console.log(visitorData)
+    if (visitorData === null) {
+      getVisitor();
+    }
+    else {
+      setVisitor(visitorData)
+    }
+
     setInterval(() => {
       Promise.all([getDate(), getMonth(), getDay(), getYear(), getTime()])
         .then(values => {
@@ -30,11 +35,14 @@ const PageOne = () => {
           console.error("Error:", error);
         });
     }, 2000)
-  }, [])
+  }, [date])
+  const handleArrowClick = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
   return (
     <div className="w-[100%] min-h-screen bg-cover bg-center  2xl:py-10 flex flex-col justify-between  overflow-hidden " style={{ backgroundImage: 'url(/assets/first-section.png)' }}>
       <nav className=" hidden sm:h-[80px] sm:w-[100%] sm:flex justify-between items-center">
-        <div className="ml-5 md:ml-10 flex items-baseline gap-x-5 ">
+        <div className="ml-5 md:ml-10 2xl:ml-16 flex items-baseline gap-x-5 ">
           <img
             className=" sm:w-[30px] lg:w-[40px]  xl:w-[50px] xl:h-[40px] 2xl:w-[66px] 2xl:h-[50px]"
             src="/assets/UnderlineLogo.svg"
@@ -52,7 +60,7 @@ const PageOne = () => {
           <img className="sm:w-[60px] lg:w-[80px]  xl:w-[150px] xl:h-[50px] 2xl:w-[204px] 2xl:h-[50px]" src="/assets/ZimaLogo.svg" alt="Logo" />
         </div>
 
-        <div className="flex items-center mr-5 md:mr-10 gap-x-3 lg:gap-x-5 xl:gap-x-6  2xl:gap-x-10">
+        <div className="flex items-center mr-5 md:mr-10 2xl:mr-16 gap-x-3 lg:gap-x-5 xl:gap-x-6  2xl:gap-x-10">
           <div>
             <p className="text-[6px]  sm:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-[14px]  text-white text-right sm:tracking-[2px]">
               {date.currentTime} {visitor?.visitor_data?.cityName} {visitor?.visitor_data.countryName}
@@ -68,36 +76,38 @@ const PageOne = () => {
         </div>
       </nav>
 
-      <nav className=" flex justify-between items-center py-5 ml-5 sm:hidden">
-        <div>
-          <img className="w-[60px]" src="/assets/ZimaLogo.svg" alt="Logo" />
+      <nav className=" flex justify-between items-center py-5 ml-2 sm:hidden">
+        <div className="ml-3 flex items-baseline gap-x-3 ">
+          <img
+            className=" w-[25px]"
+            src="/assets/UnderlineLogo.svg"
+            alt="underLineLogo"
+          />
+          <img
+            className=" w-[60px]"
+            src="/assets/zima.png"
+            alt="Zima"
+          />
+          <p className=" uppercase text-white tracking-[2px] text-[8px] ">about</p>
         </div>
-        <div className="flex items-center mr-5 space-x-2">
-          <div>
-            <p className="text-[6px]    text-white text-right tracking-[2px]">
-              {date.currentTime} {visitor?.visitor_data?.cityName} {visitor?.visitor_data.countryName}
-            </p>
-            <p className="text-[#BE9F56] text-[6px]   text-right tracking-[2px]">
-              {date.currentYear}, {date.currentDate} {date.currentMonth} {date.currentDay}
-            </p>
-          </div>
 
+        <div className="flex items-center mr-3 space-x-3">
           <img className="w-[15px] " src={visitor?.visitor_data.country.app_icon} alt="" />
           <MdOutlineShoppingBag className="w-[15px]" color="white" />
-          <CiUser className="w-[21px]" color="white" />
+          <CiUser className="w-[21px] opacity-100" color="white" />
         </div>
       </nav>
 
-      <div className="-mt-48 sm:-mt-28 lg:-mt-40 xl:-mt-20 2xl:-mt-0 3xl:-mt-24">
+      <div className="-mt-[150px] sm:-mt-16 lg:-mt-36 xl:-mt-10  2xl:mt-5 3xl:-mt-20">
 
-        <p className="text-white flex gap-x-3  items-center ml-5 md:ml-10">
+        <p className="text-white flex gap-x-3  items-center ml-5 md:ml-10 2xl:ml-16">
           <FaArrowLeft className="w-[10px] lg:w-[16px] xl:w-[22px] " />
           <span className="text-[12px] lg:text-[16px] xl:text-[22px] tracking-[2px]">Back</span>
         </p>
       </div>
 
 
-      <div className="ml-5 md:ml-10 2xl:px-10 h-[182px] w-[543px]  2xl:mt-48">
+      <div className="ml-5 md:ml-10 2xl:px-10 h-[182px] w-[543px] mt-16 sm:mt-16 lg:mt-10 xl:mt-20  2xl:mt-72">
         <h4 className="text-white text-[12px] sm:text-[15px] lg:text-[25px] 2xl:text-[40px] text-left tracking-[2px]">
           Discover
         </h4>
@@ -113,7 +123,11 @@ const PageOne = () => {
         <p className="text-[#737373] text-[8px] lg:text-[15px] 2xl:text-[20px] tracking-[2px]">
           Bringing the world closer together
         </p>
-        <img src="/assets/arrow.svg" alt="arrow" className="w-[20px] mb-1 sm:w-[30px] xl:w-[50px] xl:h-[40px] 2xl:w-[80px] 2xl:h-[40px] " />
+
+
+        <img src="/assets/arrow.svg" onClick={handleArrowClick} alt="arrow" className="w-[20px] cursor-pointer mb-2 sm:mb-1 sm:w-[30px] xl:w-[50px] xl:h-[40px] 2xl:w-[80px] 2xl:h-[40px] " />
+
+
       </div>
 
 
